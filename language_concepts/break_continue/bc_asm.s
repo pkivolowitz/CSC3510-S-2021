@@ -18,7 +18,7 @@ main:	stp		x21, x30, [sp, -16]!
 		b 		1b
 2:		cmp		x21, 10
 		blt		1b
-		ldr		x0, =brkg
+		adr		x0, brkg
 		bl		puts
 
 		ldp		x21, x30, [sp], 16

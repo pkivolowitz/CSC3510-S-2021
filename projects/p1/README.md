@@ -164,3 +164,12 @@ It is my practice to reveal to you how many lines of code my implementations req
 My deconstructed C implementation is 26 lines including appropriate blank lines (and no comments).
 
 My assembly language implementation is 39 lines including appropriate blank lines, directives such as `.global`, `.text`, `.align`, `.data` and `.end` but no comments.
+
+## Work rules
+
+All work is done solo.
+
+## What to hand in
+
+In schoology, you will upload one ZIP file containing two files: a .c source code file and a .s source code file.
+

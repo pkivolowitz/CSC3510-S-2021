@@ -133,8 +133,8 @@ How you dereference the pointer depends on what type of pointer it is.
 
 ```text
 // Assume x0 holds a pointer
-ldr		x1, [x0]	// fetches a 64 bit value
-ldr		w1, [x0]	// fetches a 32 bit value
+ldr	x1, [x0]	// fetches a 64 bit value
+ldr	w1, [x0]	// fetches a 32 bit value
 ldrh	w1, [x0]	// fetches a 16 bit value
 ldrb	w1, [x0]	// fetches an 8 bit value
 ```

@@ -4,7 +4,7 @@ Carthage College Computer Organization Course
 
 ## Our platform - emulated Cortex-A53's
 
-The emulated machines will be command-line only. A good development environment would be to edit on your native machine and sftp code down to the emulated machine where you run and debug. VS Code has a nice SFTP plug-in that can do this for you every time you save a file.
+The emulated machines will be command-line only. A good development environment would be to edit on your native machine and sftp code down to the emulated machine where you run and debug. VS Code has a nice SFTP plug-in that can do this for you every time you save a file. Additionally, VSCode supports editing via ssh by downloading the *Remote Development-SSH* extention (which can be found [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)). The official getting started docs can be found [here](https://code.visualstudio.com/docs/remote/ssh-tutorial). This has the advantage of giving you direct access to the VM (including terminal), not just syncing files. 
 
 ## Installing QEMU on MacOS
 

@@ -15,8 +15,8 @@ Do not vary messages. Do not be creative with your wording. You must, letter-for
 
 ```text
 head_address:	.asciz		"head points to: %x\n"
-node_info:		.asciz		"node at %8x contains payload: %lu next: %8x\n"
-bad_malloc:		.asciz		"malloc() failed\n"
+node_info:	.asciz		"node at %8x contains payload: %lu next: %8x\n"
+bad_malloc:	.asciz		"malloc() failed\n"
 ```
 
 ### IMPORTANT

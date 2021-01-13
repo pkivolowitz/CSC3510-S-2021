@@ -173,7 +173,7 @@ At home, update it.
 
 ### Adding a QEMU alias
 
-Edit the file that your terminal runs at launch. This will be `~/.profile`.
+Edit the file that your terminal runs at launch. This will be `~/.bashrc`.
 
 Add this line to the bottom of the file.
 
@@ -181,7 +181,24 @@ Add this line to the bottom of the file.
 alias ARM='qemu-system-aarch64 -M virt -m 2048 -cpu cortex-a53 -kernel vmlinuz-4.9.0-8-arm64 -initrd initrd.img-4.9.0-8-arm64 -append root=/dev/vda2 -drive if=none,file=hda.qcow2,format=qcow2,id=hd   -device virtio-blk-pci,drive=hd  -netdev user,id=mynet,hostfwd=tcp::2222-:22 -device virtio-net-pci,netdev=mynet -nographic -smp 2'
 ```
 
-Save the file and exit.
+Save the file and exit. How? vi, of course.
+
+0. Copy the above line into your copy / paste buffer.
+1. `cd`
+2. `vi .bashrc`
+3. `G`
+4. `A<enter>`
+5. Paste (use right click)
+6. `ESC`
+7. `:wq<enter>`
+
+The next time you log in, you should have the alias. You can confirm this by:
+
+```text
+$ alias
+```
+
+You should see the ARM alias. If you don't something is wrong.
 
 ### Ensure the alias works (repeat)
 
@@ -190,7 +207,7 @@ You can use this alias when you are in the directory where you installed the dis
 Run:
 
 ```text
-source ~/.profile
+source ~/.bashrc
 ```
 
 Now run `alias`.

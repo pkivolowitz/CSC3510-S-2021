@@ -14,13 +14,20 @@ On this day we did:
 On this day we expect to do:
 
 * Review
-* [Armv8-A_Instruction_Set_Architecture.pdf](./reference/Armv8-A_Instruction_Set_Architecture.pdf)
 * Set up issues
 
 
 ## 1/19/2021
 
+* Review
+* Study of function call standard
+* Study of AARCH64
+
 ## 1/21/2021
+
+* Review
+* [Armv8-A_Instruction_Set_Architecture.pdf](./reference/Armv8-A_Instruction_Set_Architecture.pdf)
+* Using variables in memory versus designing to keep them in registers
 
 ## 1/26/2021
 

@@ -96,6 +96,10 @@ You must use floating point registers (S registers and / or D registers) in orde
 
 Correct backing up and restoring of registers are required. 
 
+## Specifying literal values
+
+Specifying literals has been done in the data section using `.asciz`. [Here](https://sourceware.org/binutils/docs/as/index.html#Top) is a link to a document describing other assembler directives. You'll need something from this to define PI, for example.
+
 ## Reference
 
 AARCH64 floating point instruction reference:

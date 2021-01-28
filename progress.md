@@ -31,7 +31,17 @@ On this day we expect to do:
 
 ## 1/26/2021
 
+* Review
+* Wrote project 1 in class
+* Saw example of using addresses in place of counters
+* Project 2
+
 ## 1/28/2021
+
+* Review
+* Structs
+* Integers
+
 
 ## 2/2/2021
 

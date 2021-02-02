@@ -170,7 +170,7 @@ Amongst all its output, `valgrind` must produce this (ignore the number at the b
 
 ## Partner rules
 
-Partnerships are not allowed on this project. All work must be solo.
+You may work with a SPECIFIC partner, assigned by me in an email. Or you can work solo.
 
 ## What to hand in
 

@@ -45,11 +45,48 @@ On this day we expect to do:
 
 ## 2/2/2021
 
+* Review
+* Project 3
+* 2's complement numbers
+* Intro to floating point
+* Valgrind
+
 ## 2/4/2021
+
+* Review
+* More on floating point
+* NaN
+* Inf
+* Memory mapped I/O
+* 2's complement again
 
 ## 2/9/2021
 
+* Review
+* Floating point one more time
+* 2's complement again
+* Project 4
+
 ## 2/11/2021
+
+* Review
+* Spinning Disks
+   * Construction
+      * Platter
+      * Head
+	  * Blocks
+	  * Cylindars
+   * Latencies
+      * Rotational
+	  * Seek
+	  * Transfer
+   * Thrashing
+   * File Systems
+     * Super Block
+	 * Inodes
+	 * Directories
+	 * Layout of file system
+	    * Impacts on performance
 
 ## 2/16/2021
 

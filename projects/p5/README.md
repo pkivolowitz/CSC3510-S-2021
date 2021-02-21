@@ -64,7 +64,7 @@ Remember to ensure that ```size``` is a multiple of 16.
 
 While doing memory aligned allocs may not be strictly neccesary in this program, they often are in programs that use special instructions such as SIMD instructions. Now you know how to do that.
 
-Do keep in mind, that C++ 17 adds an alignment option to `new`.
+C++ 17 adds an alignment option to `new`.
 
 In ```main()``` call ```srand()``` with the current time to get non-repeated random number seeds.
 
@@ -80,15 +80,15 @@ I give you this function below:
 void SingleCore(float * a, float * b, float * c, int size);
 ```
 
-It adds each entry in `a` to the same entry in `b` and puts the result in the same slot in `c=`. This function will be your baseline for timing and also to calculate a known correct result.
+It adds each entry in `a` to the same entry in `b` and puts the result in the same slot in `c`. This function will be your baseline for timing and also to calculate a known correct result.
 
 Also write:
 
 ```C++
-float SumOfSums(float * a, int size);
+double SumOfSums(float * p, int size);
 ```
 
-This adds up the first `size` floats at the given address and returns the sum. `SumOfSums()` will be used to validate your later variations of `SingleCore())`.
+This adds up the first `size` floats at the given address and returns the sum. `SumOfSums()` will be used to validate your later variations of `SingleCore())`. Note that `SumOfSums()` returns a `double`.
 
 Here is my `SingleCore()`:
 
@@ -167,23 +167,25 @@ Use instrinsics to duplicate the functionality of the ordinary version.
 Now you should be able to produce this (compiled with ```-O3```):
 
 ```text
-p5 $> ./a.out -s 500000 -i 10
-Array size: 500000 total size in MB: 5
+perryk@ubuntu-linux:~/NEON$ ./a.out -s 50000000 -i 10
+Array size: 50000000 total size in MB: 572
 Iterations: 10
-Available cores: 4
+Available cores: 2
 Single core timings...
-Naive: 0.002420 Check: 499957.687500
-NEON:  0.002410 Check: 499957.687500
-p5 $>
+Naive: 0.014291 Check: 50003000.761409
+NEON:  0.010942 Check: 50003000.761409
+perryk@ubuntu-linux:~/NEON$ 
 ```
 
-Notice both values of `Check:` are the same. This is because `a` and `b` didn't change but the way `a[i]` was added to `b[i]` to yield `c[i]` switched from non-SIMD to SIMD.
+These timings were taken on a Linux VM on my shiny new ARM-based Apple M1.
+
+Notice all values of `Check:` are the same. This is because `a` and `b` didn't change but the way `a[i]` was added to `b[i]` to yield `c[i]` switched from non-SIMD to SIMD.
 
 If you are running on an ARM emulator / VM, your timings will be slower (possibly a lot slower).
 
 ## Step 3 - C++ Threading (C++ 11 and later)
 
-C++ threading is an abstraction and wrapper of `pthreads` which is why it requires `-pthread` on the command line to compile and link properly. There are some wrinkles like all arguments to the thread worker are passed by value. 
+C++ threading is an abstraction and wrapper of `pthreads` which is why it requires `-pthread` on the command line to compile and link properly. There are some wrinkles like all arguments to the thread worker are passed by value.
 
 There is a way around this if you want to pass by reference. Notice, I designed the computation function to take pointers to the arrays so passing by reference is not used.
 

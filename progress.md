@@ -90,9 +90,15 @@ On this day we expect to do:
 
 ## 2/16/2021
 
+Instructor wrote much of p3 live, in class.
+
 ## 2/18/2021
 
+REVIEW
+
 ## 2/23/2021
+
+MIDTERM
 
 ## 2/25/2021
 

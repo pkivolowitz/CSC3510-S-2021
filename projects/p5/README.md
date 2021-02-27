@@ -142,6 +142,8 @@ The value after `Check:` is the result of the call to `SumOfSums()` giving it th
 
 ## Step 2 - SIMD
 
+See [here](./example.md) for a simple concrete example.
+
 SIMD means *single instruction multiple data*. ARM offers the NEON instruction set. These are assembly language instructions that provide many of the same operations as the standard instructions you've already used such as add, substract, multiply etc. 
 
 However, the NEON instructions differ in an important way. They operate over several registers in parallel. In fact, the NEON instruction set adds a **new** set of registers to the ARM CPU designed for this purpose.
@@ -164,7 +166,7 @@ void Intrinsic(float * a, float * b, float * c, int size)
 
 Use instrinsics to duplicate the functionality of the ordinary version.
 
-Now you should be able to produce this (compiled with ```-O3```):
+Now you should be able to produce this (compiled with `-O3`):
 
 ```text
 perryk@ubuntu-linux:~/NEON$ ./a.out -s 50000000 -i 10
@@ -177,7 +179,7 @@ NEON:  0.010942 Check: 50003000.761409
 perryk@ubuntu-linux:~/NEON$ 
 ```
 
-These timings were taken on a Linux VM on my shiny new ARM-based Apple M1.
+These timings were taken on a Linux VM on my shiny new ARM-based Apple M1 so yours will be different.
 
 Notice all values of `Check:` are the same. This is because `a` and `b` didn't change but the way `a[i]` was added to `b[i]` to yield `c[i]` switched from non-SIMD to SIMD.
 
@@ -287,3 +289,28 @@ alias ARM='qemu-system-aarch64 -M virt -m 1024 -cpu cortex-a53 -kernel vmlinuz-4
 ```
 
 The final argument is ```-smp 2```. This sets the number of cores. Try setting it to a larger number and repeat all experiments.
+
+## Timing
+
+The idea is this:
+
+```text
+- Capture the current time (start)
+- Run all the iterations of one function
+- Capture the current time (end)
+- Subtract start from end to get the elapsed time
+- Divide by the number of iterations to get the average
+```
+
+For example:
+
+```c++
+gettimeofday(&start, NULL);
+for (int i = 0; i < loops; i++) {
+	SingleCore(a, b, c, size);
+}
+gettimeofday(&end, NULL);
+timersub(&end, &start, &elapsed);
+```
+
+I am *specifically* not completing the calculation of average time - you need to derive how that is done for yourselves by reading up on `timeval`.

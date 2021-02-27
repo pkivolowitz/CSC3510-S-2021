@@ -16,10 +16,10 @@ The above function might look like this in hand-written ASM:
 
 ```text
 Magnitude:
-	ldr		s0, [x0, 0]
-	ldr		s1, [x0, 4]
-	ldr		s2, [x0, 8]
-	ldr		s3, [x0, 12]
+	ldr	s0, [x0, 0]
+	ldr	s1, [x0, 4]
+	ldr	s2, [x0, 8]
+	ldr	s3, [x0, 12]
 	fmul	s0, s0, s0
 	fmul	s1, s1, s1
 	fmul	s2, s2, s2

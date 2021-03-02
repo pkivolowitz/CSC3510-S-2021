@@ -10,6 +10,8 @@ All work is solo.
 
 ## Command line options
 
+[Here](https://github.com/CCCSBuffet/pk_getopt_tutorial) is a getopt tutorial.
+
 ```
 p5 $> ./a.out -h
 help:

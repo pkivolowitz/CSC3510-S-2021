@@ -278,7 +278,7 @@ Your code should *not* use threading. The most important lessons in the demo cod
 
 Unroll at most 8 times. This is not an arbitrary value, though not the only good number of times. 
 
-Every AARCH64 instruction is 32 bits in length. A single cache line in the AARCH64 is 128 bits. This means 8 instructions fit in just 2 cache lines meaning your main loop(s) will fit in just 3 cache lines - a very small number so likely to stay in the cache for as long as
+Every AARCH64 instruction is 32 bits in length. A single cache line in the AARCH64 is 128 bits. This means 16 instructions fit in just 4 cache lines meaning your main loop(s) will fit in just 5 cache lines - a very small number so likely to stay in the cache for as long as
 your process is on the CPU.
 
 This entire subsection is one giant hint.

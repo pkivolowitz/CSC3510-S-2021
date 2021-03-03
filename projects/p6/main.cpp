@@ -13,12 +13,16 @@ const int bits_to_shift = 16;
 int length = 1 << bits_to_shift;
 int iterations = 4;
 
-extern "C" void MEMCPY(u_int8_t *, u_int8_t *, int);
+extern "C" void MEMCPY(u_int8_t *, u_int8_t *, size_t);
 
 void HandleOptions(int argc, char ** argv) {
 	int c;
-	while ((c = getopt(argc, argv, "i:l:")) != -1) {
+	while ((c = getopt(argc, argv, "i:l:L:")) != -1) {
 		switch (c) {
+			case 'L':
+				length = 1 << atoi(optarg);
+				break;
+
 			case 'l':
 				length = atoi(optarg);
 				break;
@@ -31,6 +35,7 @@ void HandleOptions(int argc, char ** argv) {
 				cerr << "Usage:\n";
 				cerr << "-i N	Sets number of iterations to N - default: " << iterations << endl;
 				cerr << "-l N	Sets number of bytes to copy to N - default: " << length << endl;
+				cerr << "-L N   Sets number of bytes to copy to 1 << N" << endl;
 				exit(1);
 		}
 	}
@@ -66,10 +71,12 @@ bool Compare(u_char * d, u_char * s, int length) {
 }
 
 int main(int argc, char **argv) {
+	double d;
+	const double GB = 1 << 30;
+
 	HandleOptions(argc, argv);
-	int l = ((length / 16) + 1) * 16;
-	u_int8_t * src = (u_char *) aligned_alloc(16, l);
-	u_int8_t * dst = (u_char *) aligned_alloc(16, l);
+	u_int8_t * src = (u_char *) aligned_alloc(16, (length < 16) ? 16 : length);
+	u_int8_t * dst = (u_char *) aligned_alloc(16, (length < 16) ? 16 : length);
 	InitializeSource(src, length);
 	high_resolution_clock::time_point start_time, end_time;
 
@@ -79,8 +86,11 @@ int main(int argc, char **argv) {
 	}
 	end_time = high_resolution_clock::now();
 	DURATION elapsed_time = duration_cast<DURATION>(end_time - start_time);
-	cout << "Average time:  " << elapsed_time.count() / double(iterations) << endl;
+	cout << "Total time:    " << elapsed_time.count() << endl;
+	cout << "Average time:  " << (d = elapsed_time.count() / double(iterations)) << endl;
+	cout << "GB per second: " << length / d / GB << endl;
 	cout << "Correct copy:  " << boolalpha << Compare(dst, src, length) << endl;
+	
 	Free(src, dst);
 	return 0;
 }

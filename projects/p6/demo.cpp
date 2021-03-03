@@ -11,6 +11,7 @@
 #include <cstring>
 #include <thread>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 using namespace std::chrono;
@@ -125,8 +126,8 @@ void Free(u_char * s, u_char * d) {
 
 int main(int argc, char * argv []) {
 
-	u_char * sbuffer = (u_char *) aligned_alloc(8, SIZE);
-	u_char * dbuffer = (u_char *) aligned_alloc(8, SIZE);
+	u_char * sbuffer = (u_char *) aligned_alloc(16, SIZE);
+	u_char * dbuffer = (u_char *) aligned_alloc(16, SIZE);
 
 	if (!sbuffer or !dbuffer) {
 		cerr << "Failed to allocate one or more buffers" << endl;
@@ -163,7 +164,7 @@ int main(int argc, char * argv []) {
 	}
 
 	for (auto f : functions) {
-		cout << f.label << ": " << f.total_time << endl;
+		cout << f.label << ": " << fixed << setprecision(16) << setw(16) << f.total_time << " --- " << fixed << setprecision(16) << setw(16) << f.total_time / double(ITER) << endl;
 	}
 
 	return 0;

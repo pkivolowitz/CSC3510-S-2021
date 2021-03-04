@@ -45,7 +45,7 @@ If you tweak this by hand you'll get:
 
 ```asm
 MagnitudeV:
-	ldr		q0, [x0]				// 1
+	ldr	q0, [x0]			// 1
 	fmulx	v0.4s, v0.4s, v0.4s		// 2
 	faddp	v0.4s, v0.4s, v0.4s		// 3
 	faddp	v0.4s, v0.4s, v0.4s		// 4

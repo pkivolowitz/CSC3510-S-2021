@@ -49,7 +49,7 @@ MagnitudeV:
 	fmulx	v0.4s, v0.4s, v0.4s		// 2
 	faddp	v0.4s, v0.4s, v0.4s		// 3
 	faddp	v0.4s, v0.4s, v0.4s		// 4
-	fsqrt	s0, s0					// 5
+	fsqrt	s0, s0				// 5
 	ret
 ```
 
